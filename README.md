@@ -1,6 +1,6 @@
 # PPWL 12 - FE - Clone
 Kelas Praktikum Pemograman Web Lanjut 2026 (Sistem Informasi/UNTAN). Minggu ke-12. 
-- Tiap tim diberi 2 url sub page (Home, Detail, etc.) dari web yang sama.
+- Tiap tim diberi beberapa url sub page (Home, Detail, etc.) dari web yang sama.
 - Menggunakan React TS & TailwindCSS, mahasiswa diharapkan dapat membuat UI dan interaksi page yang sama persis seperti di referensi. Nilai plus jika terdapat CSS ataupun Component UI yang terintegrasi.
 
 > [!NOTE]
