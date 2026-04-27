@@ -7,15 +7,15 @@ Kelas Praktikum Pemograman Web Lanjut 2026 (Sistem Informasi/UNTAN). Minggu ke-1
 > Lihat `instruction.md` untuk instruksi pengerjaan.
 > Gunakan file `README.md` ini sebagai laporan. Isi laporan berupa nama tim & page yang tiap anggota handle. 
 
-**Class A / Team 1**
+**Class B / Team 5**
 
-Main Web: [kokbisa.id](https://www.kokbisa.id/)
+Main Web: [Netflix](https://www.netflix.com/id-en/)
 
 |        Name       |    NIM     | Reference Page | Spesific Component |
 |-------------------|------------|----------------|--------------------|
-| Leo Prangs Tobing | H110124000 | [Page1-Home](https://www.kokbisa.id/) | Navbar, Header Carousel |
-| Other             | H110124000 | [Page1-Home](https://www.kokbisa.id/) | Main |
-| Other             | H110124000 | [Page1-Home](https://www.kokbisa.id/) | Footer |
-| Other             | H110124000 | [Page2-Langganan](https://www.kokbisa.id/langganan) | Title Area |
-| Other             | H110124000 | [Page2-Langganan](https://www.kokbisa.id/langganan) | Form Area |
-| Other             | H110124000 | [Page2-Langganan](https://www.kokbisa.id/langganan) | Button Area |
+| Athallah Rizky Erin Saputra | H1101241042 | [Page1-Home](https://www.netflix.com/id-en/) | Navbar, Header Carousel |
+| Nabila Nur Anisa             | H1101241013 | [Page1-Home](https://www.netflix.com/id-en/) | Main |
+| Kayla Naomy Nataya             | H1101241014 | [Page1-Home](https://www.netflix.com/id-en/) | Footer |
+| Shalwa Nafiisa Yusri             | H1101241065 | [Page2-Langganan](https://www.netflix.com/signup?locale=id-ID) | Title Area |
+| Gabriela Evelyn Anzelbi             | H1101241052 | [Page2-Langganan](https://www.netflix.com/signup?locale=id-ID) | Form Area |
+| Christian Haikhel Sengkey             | H1101241005 | [Page2-Langganan](https://www.netflix.com/signup?locale=id-ID) | Button Area |
