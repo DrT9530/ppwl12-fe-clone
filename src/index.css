@@ -453,29 +453,39 @@ a {
 
 .trending-carousel-wrapper {
   position: relative;
-  overflow: hidden;
 }
 
-.trending-carousel-track {
-  overflow: hidden;
+/* Native scroll container */
+.trending-scroll-container {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  cursor: grab;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
-.trending-carousel-slider {
+.trending-scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+.trending-scroll-track {
   display: flex;
-  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: transform;
-}
-
-.trending-card {
-  flex-shrink: 0;
+  gap: 8px;
   padding: 0 4px;
-  cursor: pointer;
 }
 
 @media (min-width: 768px) {
-  .trending-card {
+  .trending-scroll-track {
+    gap: 12px;
     padding: 0 6px;
   }
+}
+
+.trending-card-scroll {
+  flex-shrink: 0;
+  cursor: pointer;
 }
 
 .trending-card-inner {
@@ -528,12 +538,27 @@ a {
 /* Poster card */
 .trending-poster {
   position: relative;
-  width: 100%;
-  aspect-ratio: 2/3;
+  width: 100px;
+  height: 150px;
   border-radius: 6px;
   overflow: hidden;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
   flex-shrink: 0;
+  background: linear-gradient(145deg, #2a2a2a 0%, #1a1a1a 100%);
+}
+
+@media (min-width: 768px) {
+  .trending-poster {
+    width: 130px;
+    height: 195px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .trending-poster {
+    width: 150px;
+    height: 225px;
+  }
 }
 
 .trending-poster-img {
@@ -614,4 +639,143 @@ a {
   opacity: 0 !important;
   cursor: default;
   pointer-events: none;
+}
+
+/* ==========================================
+   MORE REASONS TO JOIN
+   ========================================== */
+.reasons-section {
+  background-color: black;
+  padding: 32px 0 48px;
+}
+
+@media (min-width: 768px) {
+  .reasons-section {
+    padding: 48px 0 64px;
+  }
+}
+
+.reasons-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+@media (min-width: 768px) {
+  .reasons-container {
+    padding: 0 48px;
+  }
+}
+
+.reasons-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 16px;
+  padding-left: 4px;
+}
+
+@media (min-width: 768px) {
+  .reasons-title {
+    font-size: 1.5rem;
+    margin-bottom: 24px;
+  }
+}
+
+.reasons-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+@media (min-width: 640px) {
+  .reasons-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .reasons-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.reasons-card {
+  position: relative;
+  background: linear-gradient(149deg, #1a1a2e 0%, #16213e 100%);
+  border-radius: 16px;
+  padding: 20px;
+  min-height: 160px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.reasons-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+@media (min-width: 768px) {
+  .reasons-card {
+    padding: 24px;
+    min-height: 200px;
+  }
+}
+
+.reasons-card-content {
+  position: relative;
+  z-index: 2;
+  max-width: 85%;
+}
+
+.reasons-card-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+@media (min-width: 768px) {
+  .reasons-card-title {
+    font-size: 1.25rem;
+    margin-bottom: 12px;
+  }
+}
+
+.reasons-card-description {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.5;
+}
+
+.reasons-card-icon {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  z-index: 1;
+}
+
+@media (min-width: 768px) {
+  .reasons-card-icon {
+    bottom: 20px;
+    right: 20px;
+  }
+}
+
+.reasons-icon {
+  width: 48px;
+  height: 48px;
+  color: white;
+  opacity: 0.9;
+}
+
+@media (min-width: 768px) {
+  .reasons-icon {
+    width: 56px;
+    height: 56px;
+  }
 }
