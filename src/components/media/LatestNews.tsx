@@ -1,69 +1,123 @@
+import { useState } from 'react';
+
 const newsItems = [
-  {
+  { 
     id: 1,
     category: 'Japan, Global',
     title: "'Soul Mate' Main Trailer Shows a Decade Guided by Fate",
-    image: 'https://ext.same-assets.com/2862108679/261912628.webp',
+    image: 'https://ext.same-assets.com/2862108679/2323253274.webp',
+    link: 'https://about.netflix.com/en/news/soulmate-main-trailer',
   },
   {
     id: 2,
     category: 'Argentina, Global',
-    title: 'Netflix announces El sobrino, the new film by Damian Szifron starring Leonardo Sbaraglia',
-    image: 'https://ext.same-assets.com/2862108679/3468464906.jpeg',
+    title: 'Netflix announces El sobrino, the new film by Damián Szifron starring Leonardo Sbaraglia',
+    image: 'https://ext.same-assets.com/2862108679/1774679822.jpeg',
+    link: 'https://about.netflix.com/en/news/netflix-anuncia-el-sobrino-la-nueva-pelicula-de-damian-szifron',
   },
   {
     id: 3,
     category: 'United States',
     title: "'Running Point' Season 2 Shoots and Scores With All-Star Brand Partners",
-    image: 'https://ext.same-assets.com/2862108679/2751877705.jpeg',
+    image: 'https://ext.same-assets.com/2862108679/2088744013.jpeg',
+    link: 'https://about.netflix.com/en/news/running-point-season-2-shoots-and-scores-with-all-star-brand-partners',
   },
 ];
 
-export default function LatestNews() {
+interface NewsCardProps {
+  item: typeof newsItems[0];
+}
+
+function NewsCard({ item }: NewsCardProps) {
+  const [imageLoaded, setImageLoaded] = useState(false);
+
   return (
-    <section className="bg-[#1a1a1a] py-8 md:py-12 px-4 md:px-12">
-      <div className="max-w-7xl mx-auto">
-        <h2 className="text-2xl md:text-3xl font-bold text-white mb-8">Latest news</h2>
+    <a
+      href={item.link}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="latest-news-card"
+    >
+      {/* Background Image with Skeleton */}
+      <div className="latest-news-card-image">
+        {/* Skeleton */}
+        <div
+          className={`image-skeleton ${imageLoaded ? 'image-skeleton-hidden' : ''}`}
+        />
+        {/* Actual Image */}
+        <img
+          src={item.image}
+          alt={item.title}
+          loading="lazy"
+          className={imageLoaded ? 'image-loaded' : 'image-loading'}
+          onLoad={() => setImageLoaded(true)}
+        />
+      </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {newsItems.map((item) => (
-            <article
-              key={item.id}
-              className="group relative rounded-lg overflow-hidden cursor-pointer h-[400px]"
-            >
-              {/* Background Image */}
-              <div className="absolute inset-0">
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-              </div>
+      {/* Gradient Overlay */}
+      <div className="latest-news-card-overlay" />
 
-              {/* Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
+      {/* Content */}
+      <div className="latest-news-card-content">
+        <span className="latest-news-card-category">{item.category}</span>
+        <h3 className="latest-news-card-title">{item.title}</h3>
+        <span className="latest-news-card-button">Read more</span>
+      </div>
+    </a>
+  );
+}
 
-              {/* Content */}
-              <div className="absolute bottom-0 left-0 right-0 p-6">
-                <p className="text-white/60 text-sm mb-2">{item.category}</p>
-                <h3 className="text-white text-lg md:text-xl font-bold mb-4 leading-tight">
-                  {item.title}
-                </h3>
-                <button className="bg-white/10 backdrop-blur hover:bg-white/20 text-white text-sm font-medium px-4 py-2 rounded transition-colors">
-                  Read more
-                </button>
-              </div>
-            </article>
-          ))}
+function NewsCardSkeleton() {
+  return (
+    <div className="latest-news-card-skeleton">
+      <div className="latest-news-card-skeleton-image" />
+      <div className="latest-news-card-skeleton-content">
+        <div className="latest-news-card-skeleton-category" />
+        <div className="latest-news-card-skeleton-title">
+          <div className="latest-news-card-skeleton-title-line" />
+          <div className="latest-news-card-skeleton-title-line" />
+          <div className="latest-news-card-skeleton-title-line" />
+        </div>
+        <div className="latest-news-card-skeleton-button" />
+      </div>
+    </div>
+  );
+}
+
+interface LatestNewsProps {
+  isLoading?: boolean;
+}
+
+export default function LatestNews({ isLoading = false }: LatestNewsProps) {
+  return (
+    <section className="latest-news-section">
+      <div className="latest-news-container">
+        <h2 className="latest-news-title">Latest news</h2>
+
+        <div className="latest-news-grid">
+          {isLoading
+            ? Array.from({ length: 3 }).map((_, index) => (
+                <NewsCardSkeleton key={index} />
+              ))
+            : newsItems.map((item) => (
+                <NewsCard key={item.id} item={item} />
+              ))}
         </div>
 
         {/* Read More News Button */}
-        <div className="flex justify-center mt-8">
-          <button className="bg-transparent border border-white/40 hover:bg-white/10 text-white font-medium px-6 py-3 rounded transition-colors">
+        <div className="latest-news-cta">
+          <a
+            href="https://about.netflix.com/en/newsroom"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="latest-news-cta-button"
+          >
             Read more news in the Newsroom
-          </button>
+          </a>
         </div>
       </div>
     </section>
   );
 }
+
+export { NewsCardSkeleton };
