@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useCallback } from 'react';
+import { useRef, useState, useCallback, useEffect } from 'react';
 
 const trendingShows = [
   {
@@ -54,55 +54,89 @@ const trendingShows = [
 ];
 
 export default function TrendingNow() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const [itemsPerView, setItemsPerView] = useState(6);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showRightArrow, setShowRightArrow] = useState(true);
   const [hoveredArrow, setHoveredArrow] = useState<'left' | 'right' | null>(null);
-  const carouselRef = useRef<HTMLDivElement>(null);
 
-  // Calculate items per view based on viewport width
-  useEffect(() => {
-    const updateItemsPerView = () => {
-      const width = window.innerWidth;
-      if (width < 500) setItemsPerView(2);
-      else if (width < 768) setItemsPerView(3);
-      else if (width < 1024) setItemsPerView(4);
-      else if (width < 1280) setItemsPerView(5);
-      else setItemsPerView(6);
-    };
-    updateItemsPerView();
-    window.addEventListener('resize', updateItemsPerView);
-    return () => window.removeEventListener('resize', updateItemsPerView);
+  // Check scroll position to show/hide arrows
+  const updateArrowVisibility = useCallback(() => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    const { scrollLeft: sl, scrollWidth, clientWidth } = container;
+    setShowLeftArrow(sl > 10);
+    setShowRightArrow(sl < scrollWidth - clientWidth - 10);
   }, []);
 
-  const maxIndex = Math.max(0, trendingShows.length - itemsPerView);
-
   useEffect(() => {
-    setShowLeftArrow(currentIndex > 0);
-    setShowRightArrow(currentIndex < maxIndex);
-  }, [currentIndex, maxIndex]);
+    const container = scrollContainerRef.current;
+    if (!container) return;
 
-  const slideCarousel = useCallback((direction: 'left' | 'right') => {
-    if (isTransitioning) return;
-    setIsTransitioning(true);
+    updateArrowVisibility();
+    container.addEventListener('scroll', updateArrowVisibility);
+    window.addEventListener('resize', updateArrowVisibility);
 
-    const step = Math.max(1, Math.floor(itemsPerView / 2));
+    return () => {
+      container.removeEventListener('scroll', updateArrowVisibility);
+      window.removeEventListener('resize', updateArrowVisibility);
+    };
+  }, [updateArrowVisibility]);
 
-    if (direction === 'right') {
-      setCurrentIndex(prev => Math.min(prev + step, maxIndex));
-    } else {
-      setCurrentIndex(prev => Math.max(prev - step, 0));
+  // Mouse drag handlers
+  const handleMouseDown = (e: React.MouseEvent) => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    setIsDragging(true);
+    setStartX(e.pageX - container.offsetLeft);
+    setScrollLeft(container.scrollLeft);
+    container.style.cursor = 'grabbing';
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging) return;
+    e.preventDefault();
+
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    const x = e.pageX - container.offsetLeft;
+    const walk = (x - startX) * 1.5; // Scroll speed multiplier
+    container.scrollLeft = scrollLeft - walk;
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+    const container = scrollContainerRef.current;
+    if (container) {
+      container.style.cursor = 'grab';
     }
+  };
 
-    setTimeout(() => setIsTransitioning(false), 500);
-  }, [isTransitioning, itemsPerView, maxIndex]);
+  const handleMouseLeave = () => {
+    if (isDragging) {
+      setIsDragging(false);
+      const container = scrollContainerRef.current;
+      if (container) {
+        container.style.cursor = 'grab';
+      }
+    }
+  };
 
-  // Calculate the translate offset
-  const getTranslateX = () => {
-    const itemWidthPercent = 100 / itemsPerView;
-    return -(currentIndex * itemWidthPercent);
+  // Arrow navigation
+  const scrollByAmount = (direction: 'left' | 'right') => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    const scrollAmount = container.clientWidth * 0.75;
+    container.scrollBy({
+      left: direction === 'left' ? -scrollAmount : scrollAmount,
+      behavior: 'smooth',
+    });
   };
 
   return (
@@ -113,8 +147,9 @@ export default function TrendingNow() {
         <div className="trending-carousel-wrapper">
           {/* Left Arrow */}
           <button
+            type="button"
             className={`trending-arrow trending-arrow-left ${showLeftArrow ? 'trending-arrow-visible' : ''}`}
-            onClick={() => slideCarousel('left')}
+            onClick={() => scrollByAmount('left')}
             onMouseEnter={() => setHoveredArrow('left')}
             onMouseLeave={() => setHoveredArrow(null)}
             aria-label="Scroll left"
@@ -122,31 +157,34 @@ export default function TrendingNow() {
           >
             <svg
               className={`w-8 h-8 transition-transform duration-200 ${hoveredArrow === 'left' ? 'scale-125' : ''}`}
-              fill="none" stroke="currentColor" viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
             >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2.5}
+                d="M15 19l-7-7 7-7"
+              />
             </svg>
           </button>
 
-          {/* Carousel Track */}
-          <div className="trending-carousel-track" ref={carouselRef}>
-            <div
-              className="trending-carousel-slider"
-              style={{
-                transform: `translateX(${getTranslateX()}%)`,
-              }}
-            >
+          {/* Scrollable Carousel Track */}
+          <div
+            ref={scrollContainerRef}
+            className="trending-scroll-container"
+            onMouseDown={handleMouseDown}
+            onMouseMove={handleMouseMove}
+            onMouseUp={handleMouseUp}
+            onMouseLeave={handleMouseLeave}
+          >
+            <div className="trending-scroll-track">
               {trendingShows.map((show, index) => (
-                <div
-                  key={show.id}
-                  className="trending-card"
-                  style={{ width: `${100 / itemsPerView}%` }}
-                >
+                <div key={show.id} className="trending-card-scroll">
                   <div className="trending-card-inner">
                     {/* Rank Number */}
-                    <span className="trending-rank">
-                      {index + 1}
-                    </span>
+                    <span className="trending-rank">{index + 1}</span>
 
                     {/* Poster */}
                     <div className="trending-poster">
@@ -155,6 +193,7 @@ export default function TrendingNow() {
                         alt={show.title}
                         className="trending-poster-img"
                         loading="lazy"
+                        draggable={false}
                       />
                       <div className="trending-poster-overlay" />
                     </div>
@@ -166,8 +205,9 @@ export default function TrendingNow() {
 
           {/* Right Arrow */}
           <button
+            type="button"
             className={`trending-arrow trending-arrow-right ${showRightArrow ? 'trending-arrow-visible' : ''}`}
-            onClick={() => slideCarousel('right')}
+            onClick={() => scrollByAmount('right')}
             onMouseEnter={() => setHoveredArrow('right')}
             onMouseLeave={() => setHoveredArrow(null)}
             aria-label="Scroll right"
@@ -175,9 +215,16 @@ export default function TrendingNow() {
           >
             <svg
               className={`w-8 h-8 transition-transform duration-200 ${hoveredArrow === 'right' ? 'scale-125' : ''}`}
-              fill="none" stroke="currentColor" viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
             >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2.5}
+                d="M9 5l7 7-7 7"
+              />
             </svg>
           </button>
         </div>
