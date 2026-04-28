@@ -293,31 +293,50 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 16px;
-  transition: background-color 0.4s ease;
+  padding: 20px 4%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.7) 10%,
+    transparent
+  );
+  transition: background-color 0.4s ease, background 0.4s ease;
 }
 
 @media (min-width: 768px) {
   .header-container {
-    padding: 20px 48px;
+    padding: 24px 4%;
+  }
+}
+
+@media (min-width: 1280px) {
+  .header-container {
+    padding: 24px 60px;
   }
 }
 
 .header-scrolled {
   position: fixed;
-  background-color: rgba(0, 0, 0, 0.9);
+  background: rgba(0, 0, 0, 0.95);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 }
 
-.header-logo {
-  height: 24px;
-  width: auto;
-  transition: transform 0.2s ease;
+.header-logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  flex-shrink: 0;
 }
 
-.header-logo:hover {
-  transform: scale(1.05);
+.header-logo {
+  height: 20px;
+  width: auto;
+}
+
+@media (min-width: 600px) {
+  .header-logo {
+    height: 28px;
+  }
 }
 
 @media (min-width: 768px) {
@@ -326,12 +345,26 @@ a {
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1280px) {
   .header-logo {
-    height: 44px;
+    height: 45px;
   }
 }
 
+/* Right side group */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+@media (min-width: 768px) {
+  .header-right {
+    gap: 16px;
+  }
+}
+
+/* Language selector */
 .header-lang-select {
   position: relative;
   display: flex;
@@ -357,7 +390,8 @@ a {
   border: 1px solid rgba(255, 255, 255, 0.35);
   color: white;
   font-size: 0.875rem;
-  padding: 4px 32px 4px 32px;
+  font-weight: 500;
+  padding: 6px 32px 6px 34px;
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -365,7 +399,7 @@ a {
 }
 
 .header-select:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.08);
   border-color: rgba(255, 255, 255, 0.5);
 }
 
@@ -376,7 +410,7 @@ a {
 
 .header-select-arrow {
   position: absolute;
-  right: 8px;
+  right: 10px;
   top: 50%;
   transform: translateY(-50%);
   width: 12px;
@@ -385,6 +419,7 @@ a {
   pointer-events: none;
 }
 
+/* Sign In button */
 .header-signin-btn {
   background-color: var(--netflix-red);
   color: white;
@@ -395,17 +430,17 @@ a {
   transition: all 0.2s ease;
   text-decoration: none;
   white-space: nowrap;
+  line-height: 1.4;
 }
 
 .header-signin-btn:hover {
   background-color: var(--netflix-red-hover);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(229, 9, 20, 0.4);
 }
 
 @media (min-width: 768px) {
   .header-signin-btn {
     padding: 7px 20px;
+    font-size: 1rem;
   }
 }
 
