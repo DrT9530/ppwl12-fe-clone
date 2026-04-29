@@ -1,28 +1,42 @@
+import { useState } from 'react';
+
 export default function CompanyAssetsCTA() {
+  const [bgLoaded, setBgLoaded] = useState(false);
+
   return (
-    <section className="relative py-16 md:py-24 px-4 md:px-12 overflow-hidden">
-      {/* Background */}
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage: `url('https://ext.same-assets.com/2862108679/1197648506.png')`,
-        }}
-      />
+    <section className="company-assets-cta">
+      {/* Background with red diagonal streams */}
+      <div className="company-assets-cta-bg">
+        {/* Skeleton */}
+        {!bgLoaded && <div className="company-assets-cta-skeleton-bg" />}
+        {/* Actual Background Image */}
+        <img
+          src="https://ext.same-assets.com/2862108679/3208161560.png"
+          alt=""
+          className={`company-assets-cta-bg-image ${bgLoaded ? 'image-loaded' : 'image-loading'}`}
+          onLoad={() => setBgLoaded(true)}
+        />
+      </div>
 
       {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
+      <div className="company-assets-cta-overlay" />
 
       {/* Content */}
-      <div className="relative z-10 max-w-4xl mx-auto text-center md:text-right md:ml-auto">
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 italic">
+      <div className="company-assets-cta-content">
+        <h2 className="company-assets-cta-title">
           Looking for company assets?
         </h2>
-        <p className="text-white/80 text-lg md:text-xl mb-8">
+        <p className="company-assets-cta-subtitle">
           Get more images and information about Netflix on our company site.
         </p>
-        <button className="bg-white/10 backdrop-blur hover:bg-white/20 border border-white/30 text-white font-medium px-8 py-3 rounded transition-colors">
+        <a
+          href="https://about.netflix.com/en/company-assets"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="company-assets-cta-button"
+        >
           Go to About Netflix
-        </button>
+        </a>
       </div>
     </section>
   );
