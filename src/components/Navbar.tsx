@@ -9,6 +9,7 @@ const Navbar = () => {
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'Media Center', path: '/page-2' },
+    { name: 'Login', path: '/login' },
   ];
 
   useEffect(() => {

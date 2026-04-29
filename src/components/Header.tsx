@@ -62,7 +62,7 @@ export default function Header() {
           </svg>
         </div>
         <Link to="/login" className="header-signin-btn">
-          Sign In
+          Masuk
         </Link>
       </div>
     </header>

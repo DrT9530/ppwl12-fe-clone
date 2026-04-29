@@ -1,29 +1,29 @@
 import { useState } from 'react';
 const faqs = [
   {
-    question: 'What is Netflix?',
-    answerTop: 'Netflix is a streaming service that offers a wide variety of award-winning TV shows, movies, anime, documentaries, and more on thousands of internet-connected devices.',
-    answerBottom: "You can watch as much as you want, whenever you want – all for one low monthly price. There's always something new to discover and new TV shows and movies are added every week!",
+    question: 'Apa itu Netflix?',
+    answerTop: 'Netflix adalah layanan streaming yang menawarkan berbagai acara TV pemenang penghargaan, film, anime, dokumenter, dan banyak lagi di ribuan perangkat yang terhubung ke Internet.',
+    answerBottom: 'Kamu bisa menonton sepuasnya, kapan pun kamu mau, tanpa satu iklan pun \u2013 semuanya dengan satu harga bulanan yang murah. Selalu ada tontonan baru dan acara TV serta film baru yang ditambahkan setiap minggu!',
   },
   {
-    question: 'How much does Netflix cost?',
-    answer: 'Watch Netflix on your smartphone, tablet, Smart TV, laptop, or streaming device, all for one fixed monthly fee. Plans range from IDR 54.000 to IDR 186.000/month. No commitments, cancel anytime.',
+    question: 'Berapa biaya berlangganan Netflix?',
+    answer: 'Tonton Netflix di smartphone, tablet, Smart TV, laptop, atau perangkat streaming-mu, semuanya dengan satu harga bulanan tetap. Rentang harga paket mulai dari Rp54.000 hingga Rp186.000/month. Tanpa komitmen, batalkan kapan pun.',
   },
   {
-    question: 'Where can I watch?',
-    answer: 'Watch anywhere, anytime. Sign in with your Netflix account to watch instantly on the web at netflix.com from your personal computer or on any internet-connected device that offers the Netflix app, including smart TVs, smartphones, tablets, streaming media players and game consoles.',
+    question: 'Di mana saya bisa menonton?',
+    answer: 'Tonton di mana pun, kapan pun. Masuk ke akun Netflix-mu untuk menonton langsung di netflix.com dari komputer pribadi atau di perangkat yang terhubung ke Internet dan mendukung aplikasi Netflix, termasuk smart TV, smartphone, tablet, pemutar media streaming, dan konsol game.',
   },
   {
-    question: 'How do I cancel?',
-    answer: 'Netflix is flexible. You can easily cancel your account online in two clicks. There are no cancellation fees — start or stop your account anytime.',
+    question: 'Bagaimana cara membatalkannya?',
+    answer: 'Netflix fleksibel. Kamu dapat dengan mudah membatalkan akunmu secara online dengan dua kali klik. Tanpa biaya pembatalan \u2013 mulai atau hentikan akunmu kapan pun.',
   },
   {
-    question: 'What can I watch on Netflix?',
-    answer: 'Netflix has an extensive library of feature films, documentaries, TV shows, anime, award-winning Netflix originals, and more. Watch as much as you want, anytime you want.',
+    question: 'Apa yang bisa ditonton di Netflix?',
+    answer: 'Netflix memiliki pustaka lengkap yang berisi film panjang, film dokumenter, serial TV, anime, Netflix original pemenang penghargaan, dan lebih banyak lagi. Tonton sepuasnya, kapan pun kamu mau.',
   },
   {
-    question: 'Is Netflix good for kids?',
-    answer: 'The Netflix Kids experience is included in your membership to give parents control while kids enjoy family-friendly TV shows and movies in their own space. Kids profiles come with PIN-protected parental controls that let you restrict the maturity rating of content kids can watch and block specific titles you don\'t want kids to see.',
+    question: 'Apakah Netflix sesuai bagi anak-anak?',
+    answer: 'Pengalaman Netflix Anak disertakan dalam keanggotaan agar kamu punya kontrol orang tua saat anak-anak menikmati acara TV dan film untuk keluarga di rumah.\n\nProfil anak dilengkapi kontrol orang tua yang dilindungi PIN sehingga kamu bisa membatasi rating usia konten yang bisa ditonton anak dan memblokir judul tertentu yang tidak boleh ditonton anak-anak.',
   },
 ];
 export default function FAQ() {
@@ -35,10 +35,10 @@ export default function FAQ() {
 
   return (
     <section className="w-full bg-black py-12 md:py-20">
-      <div className="max-w-[1200px] mx-auto px-6 md:px-10">
+      <div className="w-full mx-auto px-[24px] md:px-[48px] xl:px-[148px]">
         
         <h2 className="text-lg md:text-2xl font-bold text-left mb-6 text-white">
-        Frequently Asked Questions
+          Tanya Jawab Umum
         </h2>
 
         <div className="space-y-3">
