@@ -293,7 +293,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 4%;
+  padding: 24px 24px;
   background: linear-gradient(
     to bottom,
     rgba(0, 0, 0, 0.7) 10%,
@@ -304,13 +304,13 @@ a {
 
 @media (min-width: 768px) {
   .header-container {
-    padding: 24px 4%;
+    padding: 24px 48px;
   }
 }
 
 @media (min-width: 1280px) {
   .header-container {
-    padding: 24px 60px;
+    padding: 24px 148px;
   }
 }
 
@@ -460,14 +460,20 @@ a {
 }
 
 .trending-container {
-  max-width: 1440px;
+  max-width: none;
   margin: 0 auto;
-  padding: 0 16px;
+  padding: 0 24px;
 }
 
 @media (min-width: 768px) {
   .trending-container {
     padding: 0 48px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .trending-container {
+    padding: 0 148px;
   }
 }
 
@@ -558,23 +564,23 @@ a {
 
 @media (min-width: 768px) {
   .trending-rank {
-    font-size: 9rem;
-    margin-right: -20px;
+    font-size: 8rem;
+    margin-right: -24px;
   }
 }
 
 @media (min-width: 1024px) {
   .trending-rank {
-    font-size: 10rem;
-    margin-right: -24px;
+    font-size: 12rem;
+    margin-right: -28px;
   }
 }
 
 /* Poster card */
 .trending-poster {
   position: relative;
-  width: 100px;
-  height: 150px;
+  width: 120px;
+  height: 180px;
   border-radius: 6px;
   overflow: hidden;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
@@ -584,15 +590,15 @@ a {
 
 @media (min-width: 768px) {
   .trending-poster {
-    width: 130px;
-    height: 195px;
+    width: 160px;
+    height: 240px;
   }
 }
 
 @media (min-width: 1024px) {
   .trending-poster {
-    width: 150px;
-    height: 225px;
+    width: 210px;
+    height: 315px;
   }
 }
 
@@ -674,6 +680,92 @@ a {
   opacity: 0 !important;
   cursor: default;
   pointer-events: none;
+}
+
+/* ==========================================
+  FAQ COMPONENT STYLES
+  ========================================== */
+.faq-accordion-item {
+  @apply border border-white/20 rounded-sm overflow-hidden;
+}
+
+.faq-accordion-button {
+  @apply w-full flex items-center justify-between p-4 md:p-6 text-left bg-[#2d2d2d] hover:bg-[#3d3d3d] transition-colors;
+}
+
+.faq-accordion-icon {
+  @apply text-white text-2xl font-light transition-transform duration-200 flex-shrink-0;
+}
+
+.faq-accordion-icon.open {
+  @apply rotate-45;
+}
+
+.faq-accordion-content {
+  @apply overflow-hidden transition-all duration-300 ease-in-out;
+}
+
+.faq-accordion-content.open {
+  @apply max-h-96 opacity-100;
+}
+
+.faq-accordion-content.closed {
+  @apply max-h-0 opacity-0;
+}
+
+/* ==========================================
+  EMAIL CTA COMPONENT STYLES
+  ========================================== */
+.email-cta-input {
+  @apply w-full bg-black/60 border border-white/30 text-white px-4 md:px-5 py-3 md:py-4 rounded-sm placeholder-white/50 focus:outline-none focus:border-white/60 transition-colors text-sm md:text-base;
+}
+
+.email-cta-button {
+  @apply flex items-center justify-center gap-2 bg-[#e50914] hover:bg-[#f40612] text-white font-semibold px-6 md:px-8 py-3 md:py-4 rounded-sm transition-colors text-sm md:text-lg whitespace-nowrap;
+}
+
+.email-cta-button-arrow {
+  @apply text-xl font-light transition-transform;
+}
+
+.email-cta-button:hover .email-cta-button-arrow {
+  @apply translate-x-0.5;
+}
+
+/* ==========================================
+  FOOTER COMPONENT STYLES
+  ========================================== */
+.footer-social-icon {
+  @apply text-white/70 hover:text-white transition-colors text-sm md:text-base;
+}
+
+.footer-link {
+  @apply text-white/60 hover:text-white text-xs md:text-sm transition-colors;
+}
+
+.footer-language-select {
+  @apply bg-black border border-white/30 text-white/70 text-xs md:text-sm px-3 py-2 rounded-sm focus:outline-none focus:border-white/60 cursor-pointer;
+}
+
+.footer-language-select option {
+  @apply bg-black text-white;
+}
+
+.footer-copyright {
+  @apply text-white/50 text-xs md:text-sm;
+}
+.footer-link-underline {
+  @apply underline;
+}
+.faq-item-separator {
+  @apply border-b border-white/20 last:border-b-0;
+}
+
+.faq-answer-divider {
+  @apply h-px bg-white/10 mx-4 md:mx-6 my-3;
+}
+.hero-price-bold {
+  @apply font-bold;
 }
 
 /* ==========================================
@@ -1116,14 +1208,20 @@ a {
 }
 
 .reasons-container {
-  max-width: 1440px;
+  max-width: none;
   margin: 0 auto;
-  padding: 0 16px;
+  padding: 0 24px;
 }
 
 @media (min-width: 768px) {
   .reasons-container {
     padding: 0 48px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .reasons-container {
+    padding: 0 148px;
   }
 }
 
@@ -1162,10 +1260,10 @@ a {
 
 .reasons-card {
   position: relative;
-  background: linear-gradient(149deg, #1a1a2e 0%, #16213e 100%);
+  background: linear-gradient(149deg, #192247 0%, #210e17 96.86%);
   border-radius: 16px;
-  padding: 12px;
-  min-height: 160px;
+  padding: 16px;
+  min-height: 200px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -1181,7 +1279,7 @@ a {
 @media (min-width: 768px) {
   .reasons-card {
     padding: 24px;
-    min-height: 200px;
+    min-height: 268px;
   }
 }
 

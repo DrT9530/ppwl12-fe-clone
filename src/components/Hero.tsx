@@ -1,11 +1,11 @@
 import { useState } from 'react';
+import EmailCTA from './EmailCTA';
 
 export default function Hero() {
   const [email, setEmail] = useState('');
 
   return (
     <section className="relative min-h-[700px] md:min-h-[750px] flex items-center justify-center">
-      {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{

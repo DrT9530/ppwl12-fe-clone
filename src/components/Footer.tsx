@@ -1,3 +1,5 @@
+import React from 'react';
+
 const footerLinks = [
   'Tanya Jawab',
   'Pusat Bantuan',
@@ -20,24 +22,23 @@ const footerLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-black py-8 md:py-12 px-4 md:px-12 border-t border-[#333]">
-      <div className="max-w-6xl mx-auto">
+    <footer className="w-full bg-black py-8 md:py-12 px-[24px] md:px-[48px] xl:px-[148px] border-t border-[#333]">
+      <div className="w-full mx-auto">
         <p className="text-white/70 mb-6">
           Ada pertanyaan? Hubungi{' '}
           <a href="tel:007-803-321-8275" className="hover:underline">
             007-803-321-8275
           </a>
         </p>
-
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
-          {footerLinks.map((link) => (
-            <button
-              key={link}
-              type="button"
-              className="text-white/60 text-sm hover:underline text-left"
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-4 mb-10">
+          {footerLinks.map((link, index) => (
+            <a
+              key={index}
+              href="#"
+              className="text-white/60 hover:text-white text-sm underline underline-offset-2 transition-colors"
             >
               {link}
-            </button>
+            </a>
           ))}
         </div>
 
@@ -47,9 +48,16 @@ export default function Footer() {
               <option value="id" className="bg-black text-white">Bahasa Indonesia</option>
               <option value="en" className="bg-black text-white">English</option>
             </select>
-            <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
-              <svg className="w-3 h-3 text-white/70" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+
+            <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-white">
+              <svg 
+                width="12" 
+                height="12" 
+                viewBox="0 0 24 24" 
+                fill="currentColor" 
+                stroke="none"
+              >
+                <path d="M12 15L4 7h16l-8 8z"/>
               </svg>
             </div>
           </div>
