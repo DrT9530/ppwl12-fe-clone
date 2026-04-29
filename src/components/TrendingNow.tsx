@@ -3,53 +3,53 @@ import { useRef, useState, useCallback, useEffect } from 'react';
 const trendingShows = [
   {
     id: 1,
-    title: 'Supacell',
-    image: 'https://ext.same-assets.com/2862108679/3726117661.jpeg',
+    title: 'Pangku',
+    image: '/images/trendingnow1.webp',
   },
   {
     id: 2,
-    title: 'One Piece',
-    image: 'https://ext.same-assets.com/2862108679/2606243437.jpeg',
+    title: 'Mertua Ngeri Kali',
+    image: '/images/trendingnow2.webp',
   },
   {
     id: 3,
-    title: 'Thrash',
-    image: 'https://ext.same-assets.com/2862108679/1282238396.jpeg',
+    title: 'Pesugihan Sate Gagak',
+    image: '/images/trendingnow3.webp',
   },
   {
     id: 4,
-    title: 'Apex',
-    image: 'https://ext.same-assets.com/2862108679/3007252282.jpeg',
+    title: 'If Wishes Could Kill',
+    image: '/images/trendingnow4.webp',
   },
   {
     id: 5,
-    title: 'Beauty in Black',
-    image: 'https://ext.same-assets.com/2862108679/2132490568.jpeg',
+    title: 'Luka Makan Cinta',
+    image: '/images/trendingnow5.webp',
   },
   {
     id: 6,
-    title: 'Bloodhounds',
-    image: 'https://ext.same-assets.com/2862108679/128998045.jpeg',
+    title: 'Thrash',
+    image: '/images/trendingnow6.webp',
   },
   {
     id: 7,
-    title: 'Stranger Things',
-    image: 'https://ext.same-assets.com/2862108679/3726117661.jpeg',
+    title: 'One Piece',
+    image: '/images/trendingnow7.webp',
   },
   {
     id: 8,
-    title: 'Squid Game',
-    image: 'https://ext.same-assets.com/2862108679/2606243437.jpeg',
+    title: 'Phantom Lawyer',
+    image: '/images/trendingnow8.webp',
   },
   {
     id: 9,
-    title: 'The Witcher',
-    image: 'https://ext.same-assets.com/2862108679/1282238396.jpeg',
+    title: 'Bloodhounds',
+    image: '/images/trendingnow9.webp',
   },
   {
     id: 10,
-    title: 'Wednesday',
-    image: 'https://ext.same-assets.com/2862108679/3007252282.jpeg',
+    title: 'Jumbo',
+    image: '/images/trendingnow10.webp',
   },
 ];
 
@@ -142,7 +142,7 @@ export default function TrendingNow() {
   return (
     <section className="trending-section">
       <div className="trending-container">
-        <h2 className="trending-title">Trending Now</h2>
+        <h2 className="trending-title">Sedang Tren</h2>
 
         <div className="trending-carousel-wrapper">
           {/* Left Arrow */}

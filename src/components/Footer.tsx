@@ -1,25 +1,21 @@
 const footerLinks = [
-  'FAQ',
-  'Help Center',
-  'Account',
-  'Media Center',
-  'Netflix House',
-  'Investor Relations',
-  'Jobs',
-  'Netflix Shop',
-  'Redeem Gift Cards',
-  'Buy Gift Cards',
-  'Ways to Watch',
-  'Terms of Use',
-  'Privacy',
-  'Cookie Preferences',
-  'Corporate Information',
-  'Contact Us',
-  'Speed Test',
-  'Legal Notices',
-  'Only on Netflix',
-  'Do Not Sell or Share My Personal Information',
-  'Ad Choices',
+  'Tanya Jawab',
+  'Pusat Bantuan',
+  'Akun',
+  'Pusat Media',
+  'Hubungan Investor',
+  'Lowongan Kerja',
+  'Tukar Kartu Hadiah',
+  'Beli Kartu Hadiah',
+  'Cara Menonton',
+  'Ketentuan Penggunaan',
+  'Privasi',
+  'Preferensi Cookie',
+  'Informasi Perusahaan',
+  'Hubungi Kami',
+  'Uji Kecepatan',
+  'Informasi Legal',
+  'Hanya di Netflix',
 ];
 
 export default function Footer() {
@@ -27,9 +23,9 @@ export default function Footer() {
     <footer className="bg-black py-8 md:py-12 px-4 md:px-12 border-t border-[#333]">
       <div className="max-w-6xl mx-auto">
         <p className="text-white/70 mb-6">
-          Questions? Call{' '}
-          <a href="tel:1-866-952-4456" className="hover:underline">
-            1-866-952-4456
+          Ada pertanyaan? Hubungi{' '}
+          <a href="tel:007-803-321-8275" className="hover:underline">
+            007-803-321-8275
           </a>
         </p>
 
@@ -48,8 +44,8 @@ export default function Footer() {
         <div className="mb-6">
           <div className="relative inline-block">
             <select className="appearance-none bg-transparent border border-white/30 text-white/70 text-sm px-4 py-2 pr-10 rounded cursor-pointer hover:bg-white/10 transition-colors">
+              <option value="id" className="bg-black text-white">Bahasa Indonesia</option>
               <option value="en" className="bg-black text-white">English</option>
-              <option value="id" className="bg-black text-white">Indonesia</option>
             </select>
             <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
               <svg className="w-3 h-3 text-white/70" fill="currentColor" viewBox="0 0 20 20">
@@ -59,8 +55,10 @@ export default function Footer() {
           </div>
         </div>
 
+        <p className="text-white/40 text-sm mb-2">Netflix Indonesia</p>
+
         <p className="text-white/50 text-sm">
-          This page is protected by Google reCAPTCHA to ensure you're not a bot.
+          Halaman ini dilindungi oleh reCAPTCHA Google untuk memastikan kamu bukan bot.
         </p>
       </div>
     </footer>

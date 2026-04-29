@@ -1,6 +1,5 @@
 import Header from '../components/Header';
 import Hero from '../components/Hero';
-import PriceBanner from '../components/PriceBanner';
 import TrendingNow from '../components/TrendingNow';
 import MoreReasons from '../components/MoreReasons';
 import FAQ from '../components/FAQ';
@@ -12,7 +11,6 @@ export default function Home() {
     <div className="min-h-screen bg-black">
       <Header />
       <Hero />
-      <PriceBanner />
       <TrendingNow />
       <MoreReasons />
       <FAQ />
