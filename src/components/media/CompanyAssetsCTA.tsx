@@ -11,7 +11,7 @@ export default function CompanyAssetsCTA() {
         {!bgLoaded && <div className="company-assets-cta-skeleton-bg" />}
         {/* Actual Background Image */}
         <img
-          src="https://ext.same-assets.com/2862108679/3208161560.png"
+          src="/images/company_assets_bg.png"
           alt=""
           className={`company-assets-cta-bg-image ${bgLoaded ? 'image-loaded' : 'image-loading'}`}
           onLoad={() => setBgLoaded(true)}

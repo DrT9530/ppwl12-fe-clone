@@ -773,28 +773,37 @@ a {
    ========================================== */
 .media-hero-section {
   position: relative;
+  /* Tinggi untuk Mobile/HP */
   min-height: 600px;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Gambar latar dengan overlay gelap */
+  background-image: linear-gradient(
+      rgba(0, 0, 0, 0.6), 
+      rgba(0, 0, 0, 0.6)
+    ), 
+    url('/images/bg-media.jpeg'); /* Menggunakan bghome.jpg sesuai file di public/images Anda */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 @media (min-width: 768px) {
   .media-hero-section {
-    min-height: 700px;
+    /* Tinggi untuk Desktop disesuaikan dengan Netflix asli */
+    min-height: 560px; 
   }
 }
 
 .media-hero-bg {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    135deg,
-    #000000 0%,
-    #1a0808 25%,
-    #2d0a0a 45%,
-    #4a1515 65%,
-    #c45c32 90%,
-    #d4874a 100%
-  );
+  background-image: url('/images/bg-media.jpeg');
+  background-size: cover;
+  background-position: center;
 }
 
 .media-hero-bg::after {
@@ -1132,7 +1141,7 @@ a {
 
 @media (min-width: 768px) {
   .title-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 24px;
   }
 }
@@ -1397,7 +1406,7 @@ a {
   display: block;
   border-radius: 8px;
   overflow: hidden;
-  aspect-ratio: 4/5;
+  aspect-ratio: 16/14;
   text-decoration: none;
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -1877,13 +1886,13 @@ a {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  opacity: 0.35;
+  /* Opacity removed to show the custom bg properly */
 }
 
 .login-bg-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.55);
+  background: rgba(0, 0, 0, 0.4);
 }
 
 @media (max-width: 739px) {
@@ -1913,7 +1922,7 @@ a {
 
 @media (min-width: 1280px) {
   .login-header {
-    padding: 24px 60px;
+    padding: 24px 148px;
   }
 }
 
@@ -1959,7 +1968,7 @@ a {
 
 @media (min-width: 740px) {
   .login-main {
-    padding-top: 20px;
+    padding-top: 60px;
     padding-bottom: 60px;
   }
 }
@@ -1968,14 +1977,15 @@ a {
 .login-form-container {
   width: 100%;
   max-width: 450px;
-  padding: 48px 68px 40px;
+  padding: 20px 16px;
   border-radius: 4px;
 }
 
 @media (min-width: 740px) {
   .login-form-container {
-    background: rgba(0, 0, 0, 0.75);
-    border-radius: 4px;
+    background: transparent;
+    padding: 0;
+    margin-top: 60px;
   }
 }
 
@@ -1994,6 +2004,13 @@ a {
   line-height: 1.2;
 }
 
+@media (min-width: 740px) {
+  .login-title {
+    font-size: 2.75rem;
+    margin-bottom: 20px;
+  }
+}
+
 .login-subtitle {
   font-size: 1rem;
   color: rgba(255, 255, 255, 0.7);
@@ -2003,7 +2020,7 @@ a {
 .login-subtitle-link {
   color: white;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 700;
 }
 
 .login-subtitle-link:hover {
@@ -2045,6 +2062,7 @@ a {
   outline: none;
   font-family: inherit;
   line-height: 1.5;
+  height: 56px;
 }
 
 .login-label {
@@ -2098,9 +2116,9 @@ a {
   transform: scale(0.99);
 }
 
-/* Need Help section */
+/* Need Help Section */
 .login-help-section {
-  margin-top: 20px;
+  margin-top: 32px;
 }
 
 .login-help-toggle {
