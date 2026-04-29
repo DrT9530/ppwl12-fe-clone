@@ -293,31 +293,50 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 16px;
-  transition: background-color 0.4s ease;
+  padding: 20px 4%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.7) 10%,
+    transparent
+  );
+  transition: background-color 0.4s ease, background 0.4s ease;
 }
 
 @media (min-width: 768px) {
   .header-container {
-    padding: 20px 48px;
+    padding: 24px 4%;
+  }
+}
+
+@media (min-width: 1280px) {
+  .header-container {
+    padding: 24px 60px;
   }
 }
 
 .header-scrolled {
   position: fixed;
-  background-color: rgba(0, 0, 0, 0.9);
+  background: rgba(0, 0, 0, 0.95);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 }
 
-.header-logo {
-  height: 24px;
-  width: auto;
-  transition: transform 0.2s ease;
+.header-logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  flex-shrink: 0;
 }
 
-.header-logo:hover {
-  transform: scale(1.05);
+.header-logo {
+  height: 20px;
+  width: auto;
+}
+
+@media (min-width: 600px) {
+  .header-logo {
+    height: 28px;
+  }
 }
 
 @media (min-width: 768px) {
@@ -326,12 +345,26 @@ a {
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1280px) {
   .header-logo {
-    height: 44px;
+    height: 45px;
   }
 }
 
+/* Right side group */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+@media (min-width: 768px) {
+  .header-right {
+    gap: 16px;
+  }
+}
+
+/* Language selector */
 .header-lang-select {
   position: relative;
   display: flex;
@@ -357,7 +390,8 @@ a {
   border: 1px solid rgba(255, 255, 255, 0.35);
   color: white;
   font-size: 0.875rem;
-  padding: 4px 32px 4px 32px;
+  font-weight: 500;
+  padding: 6px 32px 6px 34px;
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -365,7 +399,7 @@ a {
 }
 
 .header-select:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.08);
   border-color: rgba(255, 255, 255, 0.5);
 }
 
@@ -376,7 +410,7 @@ a {
 
 .header-select-arrow {
   position: absolute;
-  right: 8px;
+  right: 10px;
   top: 50%;
   transform: translateY(-50%);
   width: 12px;
@@ -385,6 +419,7 @@ a {
   pointer-events: none;
 }
 
+/* Sign In button */
 .header-signin-btn {
   background-color: var(--netflix-red);
   color: white;
@@ -395,17 +430,17 @@ a {
   transition: all 0.2s ease;
   text-decoration: none;
   white-space: nowrap;
+  line-height: 1.4;
 }
 
 .header-signin-btn:hover {
   background-color: var(--netflix-red-hover);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(229, 9, 20, 0.4);
 }
 
 @media (min-width: 768px) {
   .header-signin-btn {
     padding: 7px 20px;
+    font-size: 1rem;
   }
 }
 
@@ -642,6 +677,89 @@ a {
 }
 
 /* ==========================================
+  FAQ COMPONENT STYLES
+  ========================================== */
+.faq-accordion-item {
+  @apply border border-white/20 rounded-sm overflow-hidden;
+}
+
+.faq-accordion-button {
+  @apply w-full flex items-center justify-between p-4 md:p-6 text-left bg-[#2d2d2d] hover:bg-[#3d3d3d] transition-colors;
+}
+
+.faq-accordion-icon {
+  @apply text-white text-2xl font-light transition-transform duration-200 flex-shrink-0;
+}
+
+.faq-accordion-icon.open {
+  @apply rotate-45;
+}
+
+.faq-accordion-content {
+  @apply overflow-hidden transition-all duration-300 ease-in-out;
+}
+
+.faq-accordion-content.open {
+  @apply max-h-96 opacity-100;
+}
+
+.faq-accordion-content.closed {
+  @apply max-h-0 opacity-0;
+}
+
+/* ==========================================
+  EMAIL CTA COMPONENT STYLES
+  ========================================== */
+.email-cta-input {
+  @apply w-full bg-black/60 border border-white/30 text-white px-4 md:px-5 py-3 md:py-4 rounded-sm placeholder-white/50 focus:outline-none focus:border-white/60 transition-colors text-sm md:text-base;
+}
+
+.email-cta-button {
+  @apply flex items-center justify-center gap-2 bg-[#e50914] hover:bg-[#f40612] text-white font-semibold px-6 md:px-8 py-3 md:py-4 rounded-sm transition-colors text-sm md:text-lg whitespace-nowrap;
+}
+
+.email-cta-button-arrow {
+  @apply text-xl font-light transition-transform;
+}
+
+.email-cta-button:hover .email-cta-button-arrow {
+  @apply translate-x-0.5;
+}
+
+/* ==========================================
+  FOOTER COMPONENT STYLES
+  ========================================== */
+.footer-social-icon {
+  @apply text-white/70 hover:text-white transition-colors text-sm md:text-base;
+}
+
+.footer-link {
+  @apply text-white/60 hover:text-white text-xs md:text-sm transition-colors;
+}
+
+.footer-language-select {
+  @apply bg-black border border-white/30 text-white/70 text-xs md:text-sm px-3 py-2 rounded-sm focus:outline-none focus:border-white/60 cursor-pointer;
+}
+
+.footer-language-select option {
+  @apply bg-black text-white;
+}
+
+.footer-copyright {
+  @apply text-white/50 text-xs md:text-sm;
+}
+.footer-link-underline {
+  @apply underline;
+}
+.faq-item-separator {
+  @apply border-b border-white/20 last:border-b-0;
+}
+
+.faq-answer-divider {
+  @apply h-px bg-white/10 mx-4 md:mx-6 my-3;
+}
+.hero-price-bold {
+  @apply font-bold;
    MEDIA HERO SECTION
    ========================================== */
 .media-hero-section {
