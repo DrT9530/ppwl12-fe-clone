@@ -14,8 +14,8 @@ Main Web: [Netflix](https://www.netflix.com/id-en/)
 |        Name       |    NIM     | Reference Page | Spesific Component |
 |-------------------|------------|----------------|--------------------|
 | Athallah Rizky Erin Saputra | H1101241042 | [Page1-Home](https://www.netflix.com/id-en/) | Navbar, Header Carousel |
-| Nabila Nur Anisa             | H1101241013 | [Page1-Home](https://www.netflix.com/id-en/) | Main |
-| Kayla Naomy Nataya             | H1101241014 | [Page1-Home](https://www.netflix.com/id-en/) | Footer |
-| Shalwa Nafiisa Yusri             | H1101241065 | [Page2-Langganan](https://www.netflix.com/signup?locale=id-ID) | Title Area |
-| Gabriela Evelyn Anzelbi             | H1101241052 | [Page2-Langganan](https://www.netflix.com/signup?locale=id-ID) | Form Area |
-| Christian Haikhel Sengkey             | H1101241005 | [Page2-Langganan](https://www.netflix.com/signup?locale=id-ID) | Button Area |
+| Nabila Nur Anisa             | H1101241013 | [Page1-Home](https://www.netflix.com/id-en/) | Trending & Reasons Area |
+| Kayla Naomy Nataya             | H1101241014 | [Page1-Home](https://www.netflix.com/id-en/) | FAQ, EmailCTA, & Footer |
+| Gabriela Evelyn Anzelbi             | H1101241052 | [Page2-Media](https://media.netflix.com/en/) | Media & Title Area |
+| Christian Haikhel Sengkey             | H1101241005 | [Page2-Media](https://media.netflix.com/en/) | News & Company Assets Area |
+| Shalwa Nafiisa Yusri             | H1101241065 | [Page3-Login](https://www.netflix.com/id/login) | Form Area |
