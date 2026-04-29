@@ -29,12 +29,12 @@ export default function EmailCTA({
   onSubmit={handleSubmit}
   className="flex flex-col sm:flex-row gap-3 md:gap-4 max-w-2xl mx-auto items-center"
 >
-  <div className="relative w-full sm:w-80 md:w-96">
+  <div className="relative flex-1 w-full sm:min-w-[400px]">
     <input
       type="email"
       value={email}
       onChange={(e) => setEmail(e.target.value)}
-      placeholder="Email address"
+      placeholder="Alamat email"
       className="w-full bg-black/60 border border-white/30 text-white px-4 md:px-5 py-3 md:py-3.5 placeholder-white/50 focus:outline-none focus:border-white/60 transition-colors text-sm md:text-base h-12 md:h-14 rounded-md"
       style={{ borderRadius: '4px' }}
       required

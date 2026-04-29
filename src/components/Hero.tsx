@@ -48,8 +48,36 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Gradient divider at bottom */}
-      <div className="absolute bottom-0 left-0 right-0 divider-gradient" />
+      {/* Curved SVG divider at bottom */}
+      <div className="absolute bottom-0 left-0 right-0 w-full pointer-events-none z-20 translate-y-[1px]">
+        <svg 
+          viewBox="0 0 1000 100" 
+          preserveAspectRatio="none" 
+          className="w-full h-8 sm:h-12 lg:h-16"
+        >
+          <defs>
+            <filter id="hero-glow" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="6" result="blur" />
+              <feComposite in="SourceGraphic" in2="blur" operator="over" />
+            </filter>
+            <radialGradient id="blue-shadow" cx="50%" cy="0%" r="100%" fx="50%" fy="0%">
+              <stop offset="0%" stopColor="rgba(25, 25, 50, 1)" />
+              <stop offset="100%" stopColor="rgba(0, 0, 0, 1)" />
+            </radialGradient>
+          </defs>
+          <path 
+            d="M0,100 Q500,0 1000,100 L1000,120 L0,120 Z" 
+            fill="url(#blue-shadow)" 
+          />
+          <path 
+            d="M0,100 Q500,0 1000,100" 
+            fill="none" 
+            stroke="rgba(229, 9, 20, 0.8)" 
+            strokeWidth="3"
+            filter="url(#hero-glow)"
+          />
+        </svg>
+      </div>
     </section>
   );
 }
