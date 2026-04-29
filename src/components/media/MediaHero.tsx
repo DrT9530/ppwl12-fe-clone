@@ -1,25 +1,3 @@
-const featuredShows = [
-  {
-    id: 1,
-    title: 'Fury vs Makhmudov',
-    image: 'https://ext.same-assets.com/2862108679/434726783.jpeg',
-  },
-  {
-    id: 2,
-    title: 'Thrash',
-    image: 'https://ext.same-assets.com/2862108679/2956235007.jpeg',
-  },
-  {
-    id: 3,
-    title: 'Beef',
-    image: 'https://ext.same-assets.com/2862108679/3738070820.jpeg',
-  },
-  {
-    id: 4,
-    title: 'Cave Adventure',
-    image: 'https://ext.same-assets.com/2862108679/247344348.jpeg',
-  },
-];
 
 export default function MediaHero() {
   return (
@@ -36,7 +14,7 @@ export default function MediaHero() {
             <br />
             experiences to share with
             <br />
-            the United States.
+            Indonesia.
           </h1>
 
           {/* Search Bar */}
@@ -62,31 +40,6 @@ export default function MediaHero() {
               />
             </div>
           </div>
-        </div>
-
-        {/* Featured Shows Carousel */}
-        <div className="media-hero-carousel-wrapper">
-          {/* Left Fade */}
-          <div className="media-hero-fade-left" />
-
-          {/* Carousel */}
-          <div className="media-hero-carousel">
-            {featuredShows.map((show) => (
-              <div
-                key={show.id}
-                className="media-hero-card"
-              >
-                <img
-                  src={show.image}
-                  alt={show.title}
-                  className="media-hero-card-img"
-                />
-              </div>
-            ))}
-          </div>
-
-          {/* Right Fade */}
-          <div className="media-hero-fade-right" />
         </div>
       </div>
     </section>
